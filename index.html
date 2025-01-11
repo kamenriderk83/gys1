@@ -40,7 +40,7 @@
             background-size: contain;
             background-position: center;
             background-repeat: no-repeat;
-            background-color: rgba(0, 0, 0, 0.85);
+            background-color: rgba(0, 0, 0, 0.92);
             position: relative;
         }
 
@@ -49,6 +49,7 @@
             .bg-section {
                 background-size: cover;
                 background-position: center;
+                background-color: rgba(0, 0, 0, 0.92);
             }
             
             .intro-text {
@@ -91,7 +92,7 @@
             .bg-section {
                 background-size: 100% auto;
                 background-position: center;
-                background-color: rgba(0, 0, 0, 0.85);
+                background-color: rgba(0, 0, 0, 0.92);
                 min-height: 100vh;
                 height: auto;
                 display: flex;
@@ -106,8 +107,17 @@
             }
             
             .site-title {
+                font-family: "LaoBoSong", serif;
+                font-size: 8rem;
+                color: rgba(255, 255, 255, 0.8);
+                writing-mode: vertical-rl;
+                margin: 2rem;
+                letter-spacing: 5em;
+                padding: 3rem 2.5em;
+                line-height: 5;
+                color: #fff;
                 font-size: 4rem;
-                font-family: 'Ma Shan Zheng', cursive;  
+                margin: 3rem 0;
             }
             
             #bg2 .intro-content {
@@ -261,10 +271,10 @@
             font-family: "Noto Serif JP", serif;
             font-weight: 200;
             letter-spacing: 0.3em;
-            margin: 0;
+            margin: 1.5rem 0;
             padding: 0 0.5em;
-            line-height: 2;
             color: #fff;
+            font-size: 2.5rem;
         }
 
         .intro-content {
@@ -352,6 +362,7 @@
         }
 
         .details-button {
+            color: #fff;
             background-color: rgba(255, 255, 255, 0.2);
             border: 1px solid rgba(255, 255, 255, 0.4);
             color: #fff;
@@ -468,7 +479,7 @@
         }
 
         .bg-section:not(#bg5) {
-            background-color: rgba(0, 0, 0, 0.85);
+            background-color: rgba(0, 0, 0, 0.92);
         }
 
         .modal {
@@ -802,7 +813,7 @@
             <a href="#details" class="details-button" onclick="openModal()">詳細・申請</a>
         </div>
         <div class="bg-section" id="bg4">
-            <video loop muted>
+            <video loop muted autoplay>
                 <source src="video/V23.mp4" type="video/mp4">
             </video>
             <div class="content-wrapper">
