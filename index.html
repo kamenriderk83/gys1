@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>觀音寺</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200&display=swap" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200;300;400;500;600;700;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&display=swap');
+
+        @font-face {
+            font-family: 'LaoBoSong';
+            src: url('fonts/z老报宋.ttf') format('truetype');
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Noto Serif JP", serif;
+            font-weight: 200;
+            line-height: 1.7;
+            color: #333;
+            background-color: #000;
+        }
+
+        .background-sections {
+            position: relative;
+            width: 100%;
+        }
+
+        .bg-section {
+            width: 100%;
+            min-height: 100vh;
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-color: rgba(0, 0, 0, 0.85);
+            position: relative;
+        }
+
+        /* 手机端样式 */
+        @media (max-width: 767px) {
+            .bg-section {
+                background-size: cover;
+                background-position: center;
+            }
+            
+            .intro-text {
+                font-size: calc(2vw + 0.4rem);  
+                max-height: 80vh;  
+                overflow-y: auto;  
+            }
+            
+            .site-title {
+                font-size: calc(3.5vw + 0.5rem);
+                font-family: 'Ma Shan Zheng', cursive;  
+            }
+            
+            #bg4 {
+                cursor: default;
+            }
+
+            #bg4 video {
+                opacity: 1;
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+            .map-container {
+                height: 60vh;
+                width: 100%;
+                margin: 1rem 0;
+            }
+
+            .map-title {
+                font-size: 1.5rem;
+                margin-bottom: 1rem;
+            }
+        }
+
+        /* 电脑端样式 */
+        @media (min-width: 768px) {
+            .bg-section {
+                background-size: 100% auto;
+                background-position: center;
+                background-color: rgba(0, 0, 0, 0.85);
+                min-height: 100vh;
+                height: auto;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            .intro-text {
+                font-size: 1.2rem;
+                max-height: 90vh;  
+                overflow-y: auto;  
+            }
+            
+            .site-title {
+                font-size: 4rem;
+                font-family: 'Ma Shan Zheng', cursive;  
+            }
+            
+            #bg2 .intro-content {
+                padding: 0 15%;  
+                max-height: 90vh;  
+            }
+            
+            .map-container {
+                height: 70vh;
+                width: 80%;
+                margin: 2rem 0;
+            }
+
+            .map-title {
+                font-size: 2rem;
+                margin-bottom: 2rem;
+            }
+        }
+
+        .intro-text {
+            line-height: 1.6;
+            letter-spacing: 0.4em;
+            white-space: pre-wrap;
+            text-align: justify;
+            font-weight: 200;
+        }
+
+        .bg-section::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 1;
+        }
+
+        .daily-title, .daily-content, .details-button {
+            position: relative;
+            z-index: 2;
+        }
+
+        .intro-content {
+            position: relative;
+            z-index: 2;  
+        }
+
+        #bg1 {
+            background-image: url('images/IMG1.jpg');
+            z-index: 3;
+            position: relative;
+        }
+
+        #bg2 {
+            background-image: url('images/IMG31.jpg');
+            z-index: 4;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #bg3 {
+            background-image: url('images/IMG3.jpg');
+            z-index: 3;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+        }
+
+        #bg4 {
+            background-image: url('images/IMG17.jpg');
+            z-index: 2;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        #bg4 video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            z-index: 1;
+        }
+
+        #bg4:hover video {
+            opacity: 1;
+        }
+
+        #bg4 .content-wrapper {
+            position: relative;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        #bg5 {
+            min-height: 100vh;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem;
+            background: transparent;
+        }
+
+        .header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: 10;
+            pointer-events: none;
+        }
+
+        .header-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: #fff;
+            z-index: 2;
+            writing-mode: vertical-rl;
+            text-orientation: upright;
+            margin: 0 auto;
+            height: 80vh;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .site-title {
+            font-family: "Noto Serif JP", serif;
+            font-weight: 200;
+            letter-spacing: 0.3em;
+            margin: 0;
+            padding: 0 0.5em;
+            line-height: 2;
+            color: #fff;
+        }
+
+        .intro-content {
+            position: absolute;
+            color: #fff;
+            z-index: 3;
+            text-align: left;
+            padding: 2rem;
+            max-width: 800px;
+        }
+
+        .temple-name {
+            display: none;  
+        }
+
+        .navigation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            pointer-events: auto;
+        }
+
+        .drawer-button {
+            width: 30px;
+            height: 20px;
+            position: relative;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .drawer-button span {
+            display: block;
+            width: 100%;
+            height: 1px;
+            background-color: #fff;
+            transition: all 0.3s ease;
+        }
+
+        .contact-link {
+            font-family: "Noto Serif JP", serif;
+            font-weight: 200;
+            color: #fff;
+            text-decoration: none;
+            font-size: 1rem;
+            letter-spacing: 0.1em;
+            transition: opacity 0.3s ease;
+        }
+
+        .contact-link:hover {
+            opacity: 0.8;
+        }
+
+        .daily-title {
+            font-family: 'Noto Serif JP', serif;
+            font-weight: 200;
+            margin-bottom: 2rem;
+        }
+
+        .daily-title .small-text {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            letter-spacing: 0.2em;
+        }
+
+        .daily-title .large-text {
+            font-size: 2.5rem;
+            letter-spacing: 0.3em;
+        }
+
+        .daily-content {
+            font-family: 'Noto Serif JP', serif;
+            font-weight: 200;
+            line-height: 2;
+            letter-spacing: 0.15em;
+            margin-bottom: 4rem;
+            max-width: 80%;
+        }
+
+        .details-button {
+            background-color: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            color: #fff;
+            padding: 1rem 3rem;
+            font-family: 'Noto Serif JP', serif;
+            font-weight: 200;
+            font-size: 1.1rem;
+            letter-spacing: 0.2em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            backdrop-filter: blur(5px);
+        }
+
+        .details-button:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .map-title {
+            color: #fff;
+            font-family: "Noto Serif JP", serif;
+            font-weight: 200;
+            letter-spacing: 0.2em;
+            text-align: center;
+        }
+
+        .map-container {
+            position: relative;
+            width: 100%;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            position: relative;
+            pointer-events: auto;
+            background: transparent !important;
+            z-index: 1000;
+        }
+
+        #map {
+            width: 100%;
+            height: 100%;
+        }
+
+        .drawer {
+            position: fixed;
+            top: 0;
+            left: -300px;
+            width: 300px;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.9);
+            transition: left 0.3s ease;
+            z-index: 1000;
+            padding: 2rem;
+        }
+
+        .drawer.open {
+            left: 0;
+        }
+
+        .drawer-menu {
+            list-style: none;
+            padding: 0;
+            margin: 3rem 0 0 0;
+        }
+
+        .drawer-menu li {
+            margin: 1.5rem 0;
+        }
+
+        .drawer-menu a {
+            color: #fff;
+            text-decoration: none;
+            font-family: 'Noto Serif JP', serif;
+            font-size: 1.2rem;
+            letter-spacing: 0.2em;
+            transition: opacity 0.3s ease;
+        }
+
+        .drawer-menu a:hover {
+            opacity: 0.7;
+        }
+
+        .drawer-close {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+        }
+
+        .drawer-close::before,
+        .drawer-close::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background-color: #fff;
+        }
+
+        .drawer-close::before {
+            transform: rotate(45deg);
+        }
+
+        .drawer-close::after {
+            transform: rotate(-45deg);
+        }
+
+        .bg-section:not(#bg5) {
+            background-color: rgba(0, 0, 0, 0.85);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+
+        .modal-content {
+            background-color: rgba(0, 0, 0, 0.9);
+            margin: 5% auto;
+            padding: 2rem;
+            width: 90%;
+            max-width: 800px;
+            position: relative;
+            color: #fff;
+            font-family: "Noto Serif JP", serif;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .close-modal {
+            position: absolute;
+            right: 2rem;
+            top: 2rem;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #fff;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+        }
+
+        .close-modal:hover {
+            opacity: 1;
+        }
+
+        .service-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 2rem;
+        }
+
+        .service-table th,
+        .service-table td {
+            padding: 1.5rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            vertical-align: top;
+        }
+
+        .service-table th {
+            font-weight: 400;
+            letter-spacing: 0.2em;
+            color: #a8a8a8;
+        }
+
+        .service-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .service-name {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.1em;
+        }
+
+        .service-description {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: #a8a8a8;
+            letter-spacing: 0.05em;
+        }
+
+        .note {
+            margin-top: 2rem;
+            padding: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #888;
+            text-align: center;
+            letter-spacing: 0.1em;
+        }
+
+        .modal-footer {
+            margin-top: 2rem;
+            padding: 2rem 0 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+        }
+
+        .contact-button {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            color: #fff;
+            text-decoration: none;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+            font-family: "Noto Serif JP", serif;
+            font-weight: 200;
+            letter-spacing: 0.2em;
+            background-color: transparent;
+        }
+
+        .contact-button:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        @media (max-width: 767px) {
+            .modal-content {
+                margin: 10% auto;
+                padding: 1.5rem;
+                width: 95%;
+            }
+
+            .service-table th,
+            .service-table td {
+                padding: 1rem;
+            }
+
+            .service-name {
+                font-size: 1.1rem;
+            }
+        }
+
+        .footer {
+            padding: 3rem 2rem;
+            background-color: rgba(0, 0, 0, 0.95);
+            color: #fff;
+            font-family: "Noto Serif JP", serif;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            text-align: left;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .social-link {
+            color: #fff;
+            text-decoration: none;
+            opacity: 0.7;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            opacity: 1;
+            transform: translateY(-2px);
+        }
+
+        .social-icon {
+            width: 18px;
+            height: 18px;
+        }
+
+        .address-info {
+            line-height: 1.6;
+            letter-spacing: 0.05em;
+            font-weight: 200;
+            font-size: 0.85rem;
+        }
+
+        .address-info p {
+            margin: 0.3rem 0;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .footer-divider {
+            width: 100%;
+            height: 1px;
+            background-color: rgba(255, 255, 255, 0.1);
+            margin: 1rem 0;
+        }
+
+        .copyright {
+            font-size: 0.75rem;
+            opacity: 0.5;
+        }
+
+        @media (max-width: 767px) {
+            .footer {
+                padding: 2rem 1rem;
+            }
+
+            .social-links {
+                gap: 1.2rem;
+            }
+
+            .address-info {
+                font-size: 0.8rem;
+            }
+        }
+
+        .map-info {
+            margin-top: 2rem;
+            padding: 0 2rem;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.85);
+            font-family: "Noto Serif JP", serif;
+            font-weight: 200;
+            letter-spacing: 0.05em;
+        }
+
+        .map-info-title {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+
+        .map-info-content {
+            font-size: 0.9rem;
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .map-info-list {
+            list-style: none;
+            padding: 0;
+            margin: 1rem 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .map-info-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .map-info-icon {
+            width: 16px;
+            height: 16px;
+            opacity: 0.7;
+        }
+
+        @media (max-width: 767px) {
+            .map-info {
+                padding: 0 1rem;
+            }
+
+            .map-info-list {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: center;
+            }
+
+            .map-info-content {
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navigation">
+        <div class="drawer-button">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <a href="#contact" class="contact-link">Contact</a>
+    </nav>
+
+    <div class="drawer">
+        <div class="drawer-close"></div>
+        <ul class="drawer-menu">
+            <li><a href="#home">首頁</a></li>
+            <li><a href="#about">關於我們</a></li>
+            <li><a href="#visit">參拜指南</a></li>
+            <li><a href="#contact">聯絡方式</a></li>
+        </ul>
+    </div>
+
+    <div class="background-sections">
+        <div class="bg-section" id="bg1">
+            <div class="header-content">
+                <h1 class="site-title">觀</h1>
+                <h1 class="site-title">音</h1>
+                <h1 class="site-title">寺</h1>
+            </div>
+        </div>
+        <div class="bg-section" id="bg2">
+            <div class="intro-content">
+                <p class="intro-text">觀音寺是「調律與靈感的庭園」。
+
+在這片庭院中，時光靜靜流淌，
+
+當你平靜心靈，與自己對話時，
+
+你會感受到身心逐漸平和，
+
+湧現出繼續前行的力量。
+
+迎來開山1300周年之際的觀音寺，
+
+在探索人與寺院的新關係的同時，
+
+致力於成為所有人
+
+心靈的歸宿之地。</p>
+            </div>
+        </div>
+        <div class="bg-section" id="bg3">
+            <div class="daily-title">
+                <div class="small-text">--</div>
+                <div class="large-text">法會項目</div>
+            </div>
+            <div class="daily-content">
+                體驗觀音寺的世界觀之參拜。通過寫經<br>
+                平靜心靈，在「調律與靈感的庭園」中觀照自我，<br>
+                請感受日日之美好。
+            </div>
+            <a href="#details" class="details-button" onclick="openModal()">詳細・申請</a>
+        </div>
+        <div class="bg-section" id="bg4">
+            <video loop muted>
+                <source src="video/V23.mp4" type="video/mp4">
+            </video>
+            <div class="content-wrapper">
+                <!-- 如果有任何文字内容放在这里 -->
+            </div>
+        </div>
+        <div class="bg-section" id="bg5">
+            <div class="map-title">地圖</div>
+            <div class="map-container">
+                <iframe id="map"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3683.937432382113!2d113.00535055554198!3d22.581443311787332!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x340222a161e26d61%3A0xb57ab0e878c94589!2z6KeC6Z-z5a-6!5e0!3m2!1sen!2ssg!4v1736622257601!5m2!1sen!2ssg"
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+            <div class="map-info">
+                <div class="map-info-title">參拜須知</div>
+                <div class="map-info-content">
+                    為提供信眾更優質的參拜體驗，本寺特設以下貼心服務：
+                </div>
+                <ul class="map-info-list">
+                    <li class="map-info-item">
+                        <svg class="map-info-icon" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.85 7h10.29l1.08 3.11H5.77L6.85 7zM19 17H5v-5h14v5z"/>
+                            <circle cx="7.5" cy="14.5" r="1.5"/>
+                            <circle cx="16.5" cy="14.5" r="1.5"/>
+                        </svg>
+                        設有專屬停車場，可容納百輛車位
+                    </li>
+                    <li class="map-info-item">
+                        <svg class="map-info-icon" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                        </svg>
+                        建議提前來電預約法會直播服務
+                    </li>
+                    <li class="map-info-item">
+                        <svg class="map-info-icon" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+                        </svg>
+                        特殊法會需提前三日登記安排
+                    </li>
+                </ul>
+                <div class="map-info-content">
+                    本寺竭誠為您提供莊嚴、寧靜的修持環境。<br>
+                    如需了解更多資訊，歡迎隨時與我們聯繫。
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="serviceModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <table class="service-table">
+                <tr>
+                    <th>法會項目</th>
+                    <th>內容說明</th>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="service-item">
+                            <div class="service-name">焰口法會</div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="service-description">
+                            透過莊嚴的佛事儀軌，為陽世祈福消災，為往生者超度。法師以專注虔誠之心，引領信眾共修，祈願消除業障，增長福慧。
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="service-item">
+                            <div class="service-name">拜忏法會</div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="service-description">
+                            包含梁皇寶懺、慈悲三昧水懺、大悲懺等多種懺法。透過至誠懺悔，淨化身心，消除罪業，開啟智慧，圓滿福德。
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="service-item">
+                            <div class="service-name">普佛法會</div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="service-description">
+                            為延生者祈福，為往生者祈願。透過禮佛、誦經、供養等儀軌，祈願消災免難，增福延壽，往生淨土。
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="service-item">
+                            <div class="service-name">消災祈福</div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="service-description">
+                            為個人或公司行號祈福，透過誦經、持咒、供養等修持，祈願事業順遂，平安吉祥，消災解厄。
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="service-item">
+                            <div class="service-name">供養項目</div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="service-description">
+                            ・供燈：點亮心燈，照破無明，增長智慧<br>
+                            ・供花：莊嚴道場，培植善根，福德圓滿<br>
+                            ・供果：表達誠心，培養福田，善緣增長<br>
+                            ・供僧：護持三寶，植福修慧，功德無量
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <div class="note">
+                所有項目皆可隨喜供養，一切隨緣。祈願善信隨心發願，廣結善緣，同沐佛恩。
+            </div>
+            <div class="modal-footer">
+                <a href="#contact" class="contact-button" onclick="closeModal()">聯絡方式</a>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="social-links">
+                <a href="#" class="social-link" aria-label="Instagram">
+                    <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M16.98 0a6.9 6.9 0 0 1 5.08 1.98A6.94 6.94 0 0 1 24 7.02v9.96c0 2.08-.68 3.87-1.98 5.13A7.14 7.14 0 0 1 16.94 24H7.06a7.06 7.06 0 0 1-5.03-1.89A6.96 6.96 0 0 1 0 16.94V7.02C0 2.8 2.8 0 7.02 0h9.96zm.05 2.23H7.06c-1.45 0-2.7.43-3.53 1.25a4.82 4.82 0 0 0-1.3 3.54v9.92c0 1.5.43 2.7 1.3 3.58a5 5 0 0 0 3.53 1.25h9.88a5 5 0 0 0 3.53-1.25 4.73 4.73 0 0 0 1.4-3.54V7.02a5 5 0 0 0-1.3-3.49 4.82 4.82 0 0 0-3.54-1.3zM-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                    </svg>
+                </a>
+                <a href="#" class="social-link" aria-label="Facebook">
+                    <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-5.628-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z"/>
+                    </svg>
+                </a>
+                <a href="#" class="social-link" aria-label="Twitter">
+                    <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                    </svg>
+                </a>
+            </div>
+            <div class="address-info">
+                <p>觀音寺</p>
+                <p>地址：廣東省中山市石岐區觀音山</p>
+                <p>郵編：528400</p>
+                <p>電話：0760-88888888</p>
+                <p>傳真：0760-88888889</p>
+                <p>電郵：info@guanyintemple.com</p>
+            </div>
+            <div class="footer-divider"></div>
+            <p class="copyright"> 2024 觀音寺 版權所有</p>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelector('.drawer-button').addEventListener('click', function() {
+            document.querySelector('.drawer').classList.add('open');
+        });
+
+        document.querySelector('.drawer-close').addEventListener('click', function() {
+            document.querySelector('.drawer').classList.remove('open');
+        });
+
+        function openModal() {
+            document.getElementById('serviceModal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('serviceModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // 点击模态框外部关闭
+        window.onclick = function(event) {
+            var modal = document.getElementById('serviceModal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+
+        // 处理视频hover效果
+        document.querySelector('#bg4').addEventListener('mouseenter', function() {
+            const video = this.querySelector('video');
+            video.play();
+        });
+
+        document.querySelector('#bg4').addEventListener('mouseleave', function() {
+            const video = this.querySelector('video');
+            video.pause();
+            video.currentTime = 0;
+        });
+
+        // 移动端视频自动播放
+        document.addEventListener('DOMContentLoaded', function() {
+            const video = document.querySelector('#bg4 video');
+            const isMobile = window.matchMedia('(max-width: 767px)').matches;
+            
+            if (isMobile) {
+                // 设置视频属性
+                video.setAttribute('playsinline', ''); // iOS支持内联播放
+                video.setAttribute('webkit-playsinline', ''); // 旧版iOS支持
+                video.setAttribute('autoplay', ''); // 自动播放
+                
+                // 尝试播放视频
+                const playVideo = function() {
+                    video.play().catch(function(error) {
+                        console.log("视频自动播放失败:", error);
+                    });
+                };
+                
+                // 页面加载和滚动时尝试播放
+                playVideo();
+                
+                // 监听滚动，当视频进入视口时播放
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            playVideo();
+                        } else {
+                            video.pause();
+                        }
+                    });
+                }, { threshold: 0.5 });
+                
+                observer.observe(document.querySelector('#bg4'));
+            }
+        });
+    </script>
+</body>
+</html>
