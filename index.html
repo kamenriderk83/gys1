@@ -37,11 +37,15 @@
         .bg-section {
             width: 100%;
             min-height: 100vh;
-            background-size: contain;
+            background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            background-color: rgba(0, 0, 0, 0.92);
             position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
         }
 
         /* 手机端样式 */
@@ -49,7 +53,11 @@
             .bg-section {
                 background-size: cover;
                 background-position: center;
-                background-color: rgba(0, 0, 0, 0.92);
+                height: 100vh;
+            }
+            
+            #bg1, #bg2, #bg3, #buddha-craft, #memorial-tablets, #wish-fulfillment {
+                background-size: cover;
             }
             
             .intro-text {
@@ -90,9 +98,8 @@
         /* 电脑端样式 */
         @media (min-width: 768px) {
             .bg-section {
-                background-size: 100% auto;
+                background-size: cover;
                 background-position: center;
-                background-color: rgba(0, 0, 0, 0.92);
                 min-height: 100vh;
                 height: auto;
                 display: flex;
@@ -749,6 +756,45 @@
                 font-size: 0.85rem;
             }
         }
+        
+        .vertical-text {
+            position: absolute;
+            top: 50%;
+            right: 10%;
+            transform: translateY(-50%);
+            font-family: "Noto Serif JP", serif;
+            font-size: 2rem;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.9);
+            writing-mode: vertical-rl;
+            text-orientation: upright;
+            z-index: 2;
+            letter-spacing: 2rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            padding-top: 2rem;
+        }
+
+        .video-note {
+            position: absolute;
+            bottom: 2rem;
+            right: 2rem;
+            font-family: "Noto Serif JP", serif;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+            z-index: 2;
+            letter-spacing: 0.1rem;
+            font-weight: 200;
+        }
+
+        .bg-section video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+        }
     </style>
 </head>
 <body>
@@ -764,9 +810,14 @@
     <div class="drawer">
         <div class="drawer-close"></div>
         <ul class="drawer-menu">
-            <li><a href="#home">首頁</a></li>
-            <li><a href="#about">關於我們</a></li>
-            <li><a href="#visit">參拜指南</a></li>
+            <li><a href="#bg1">首頁</a></li>
+            <li><a href="#bg2">寺院介紹</a></li>
+            <li><a href="#bg3">法會項目</a></li>
+            <li><a href="#bg4">每日集會</a></li>
+            <li><a href="#buddha-craft">佛像認供</a></li>
+            <li><a href="#memorial-tablets">牌位登記</a></li>
+            <li><a href="#wish-fulfillment">許願還願</a></li>
+            <li><a href="#bg5">地圖指引</a></li>
             <li><a href="#contact">聯絡方式</a></li>
         </ul>
     </div>
@@ -813,6 +864,8 @@
             <a href="#details" class="details-button" onclick="openModal()">詳細・申請</a>
         </div>
         <div class="bg-section" id="bg4">
+            <div class="vertical-text">每日集會</div>
+            <div class="video-note">※ 若影片未自動播放，敬請輕觸螢幕啟動</div>
             <video loop muted autoplay>
                 <source src="video/V23.mp4" type="video/mp4">
             </video>
@@ -820,11 +873,57 @@
                 <!-- 如果有任何文字内容放在这里 -->
             </div>
         </div>
+        <div class="bg-section" id="buddha-craft" style="background-image: url('images/IMG6.JPG');">
+            <div class="intro-content" style="position: relative; z-index: 3; display: flex; justify-content: center; align-items: center; flex-direction: column;">
+                <div class="daily-title">
+                    <div class="small-text">--</div>
+                    <div class="large-text">佛像認供</div>
+                </div>
+                <div class="daily-content">
+                    虔誠供養佛像，功德無量。本寺承接各類佛像認供，<br>
+                    包括木雕、銅像、泥塑等，由專業團隊精心製作，<br>
+                    莊嚴如一，福慧雙修。
+                </div>
+                <a href="#buddha-details" class="details-button" onclick="openBuddhaModal()">詳細・申請</a>
+            </div>
+        </div>
+        <div class="bg-section" id="memorial-tablets" style="background-image: url('images/IMG15.JPG'); background-position: center 30%;">
+            <div class="intro-content" style="position: relative; z-index: 3; display: flex; justify-content: center; align-items: center; flex-direction: column;">
+                <div class="daily-title">
+                    <div class="small-text">--</div>
+                    <div class="large-text">牌位登記</div>
+                </div>
+                <div class="daily-content">
+                    為先人設立牌位，延續慎終追遠之心。本寺設有<br>
+                    萬佛殿供奉牌位，由法師定期誦經祈福，<br>
+                    冥陽兩利，功德圓滿。
+                </div>
+                <a href="#memorial-details" class="details-button" onclick="openMemorialModal()">詳細・申請</a>
+            </div>
+        </div>
+        <div class="bg-section" id="wish-fulfillment" style="background-image: url('images/IMG9.JPG');">
+            <div class="video-note">※ 若影片未自動播放，敬請輕觸螢幕啟動</div>
+            <video loop muted playsinline>
+                <source src="video/V5.mp4" type="video/mp4">
+            </video>
+            <div class="intro-content" style="position: relative; z-index: 3; display: flex; justify-content: center; align-items: center; flex-direction: column;">
+                <div class="daily-title">
+                    <div class="small-text">--</div>
+                    <div class="large-text">許願還願</div>
+                </div>
+                <div class="daily-content">
+                    心誠則靈，願力不可思議。本寺設有祈願堂，<br>
+                    供信眾許願祈福，還願謝恩，<br>
+                    祈願世界和平，眾生安樂。
+                </div>
+                <a href="#wish-details" class="details-button" onclick="openWishModal()">詳細・申請</a>
+            </div>
+        </div>
         <div class="bg-section" id="bg5">
             <div class="map-title">地圖</div>
             <div class="map-container">
                 <iframe id="map"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3683.937432382113!2d113.00535055554198!3d22.581443311787332!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x340222a161e26d61%3A0xb57ab0e878c94589!2z6KeC6Z-z5a-6!5e0!3m2!1sen!2ssg!4v1736622257601!5m2!1sen!2ssg"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3683.937432382113!2d113.00535055554198!3d22.581443311787332!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x340222a161e26d61%3A0xb57ab0e878c94589!2z6KeC6Z-z5a-6!5e0!3m2!1szh-CN!2scn!4v1705316723601!5m2!1szh-CN!2scn"
                     style="border:0;" 
                     allowfullscreen="" 
                     loading="lazy"
@@ -839,9 +938,7 @@
                 <ul class="map-info-list">
                     <li class="map-info-item">
                         <svg class="map-info-icon" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.85 7h10.29l1.08 3.11H5.77L6.85 7zM19 17H5v-5h14v5z"/>
-                            <circle cx="7.5" cy="14.5" r="1.5"/>
-                            <circle cx="16.5" cy="14.5" r="1.5"/>
+                            <path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v9.96c0 2.08-.68 3.87-1.98 5.13A7.14 7.14 0 0 1 16.94 24H7.06a7.06 7.06 0 0 1-5.03-1.89A6.96 6.96 0 0 1 0 16.94V7.02C0 2.8 2.8 0 7.02 0h9.96zm.05 2.23H7.06c-1.45 0-2.7.43-3.53 1.25a4.82 4.82 0 0 0-1.3 3.54v9.92c0 1.5.43 2.7 1.3 3.58a5 5 0 0 0 3.53 1.25h9.88a5 5 0 0 0 3.53-1.25 4.73 4.73 0 0 0 1.4-3.54V7.02a5 5 0 0 0-1.3-3.49 4.82 4.82 0 0 0-3.54-1.3zM-1.161 17.52h1.833L7.084 4.126H5.117z"/>
                         </svg>
                         設有專屬停車場，可容納百輛車位
                     </li>
@@ -947,6 +1044,204 @@
         </div>
     </div>
 
+    <div id="buddhaModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeBuddhaModal()">&times;</span>
+            <table class="service-table">
+                <tr>
+                    <th>佛像類型</th>
+                    <th>內容說明</th>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="service-item">
+                            <div class="service-name">木雕佛像</div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="service-description">
+                            採用上等香木精心雕刻，保持木材天然紋理，展現佛像莊嚴之美。可根據需求定制大小，適合家庭供奉或寺院安置。
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="service-item">
+                            <div class="service-name">銅鑄佛像</div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="service-description">
+                            選用優質紫銅，採用傳統工藝鑄造，造型端莊，做工精細。可製作各種尺寸，適合戶外或殿堂供奉。
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="service-item">
+                            <div class="service-name">貼金佛像</div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="service-description">
+                            採用純金貼面工藝，莊嚴華貴，永不褪色。可根據預算選擇不同金量，確保每尊佛像都光潔如新。
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="service-item">
+                            <div class="service-name">玉石佛像</div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="service-description">
+                            精選優質玉石，純手工雕刻，晶瑩剔透，獨一無二。適合作為特殊供奉或收藏。
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <div class="note">
+                所有佛像均由專業團隊製作，確保品質。認供後將為施主舉行開光點眼法會，莊嚴道場。
+            </div>
+            <div class="modal-footer">
+                <a href="#contact" class="contact-button" onclick="closeBuddhaModal()">聯絡方式</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="memorialModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeMemorialModal()">&times;</span>
+            <table class="service-table">
+                <tr>
+                    <th>牌位類型</th>
+                    <th>內容說明</th>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="service-item">
+                            <div class="service-name">往生蓮位</div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="service-description">
+                            為往生者設立蓮位，由本寺法師每日誦經迴向，祈願往生淨土。可選擇一年期或永久性蓮位。
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="service-item">
+                            <div class="service-name">祖先牌位</div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="service-description">
+                            供奉歷代祖先牌位，延續慎終追遠之心。本寺將於重大節日舉行祭祀法會，祈願子孫昌盛。
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="service-item">
+                            <div class="service-name">累劫超薦</div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="service-description">
+                            為累劫冤親債主設立超薦牌位，化解因緣，消除業障，共結善緣。
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="service-item">
+                            <div class="service-name">功德迴向</div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="service-description">
+                            為在世親友設立功德牌位，祈願消災延壽，福慧增長，事事如意。
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <div class="note">
+                所有牌位均由專業師傅製作，莊嚴典雅。本寺將定期舉行祭祀法會，迴向功德。
+            </div>
+            <div class="modal-footer">
+                <a href="#contact" class="contact-button" onclick="closeMemorialModal()">聯絡方式</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="wishModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeWishModal()">&times;</span>
+            <table class="service-table">
+                <tr>
+                    <th>祈願類別</th>
+                    <th>內容說明</th>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="service-item">
+                            <div class="service-name">平安祈福</div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="service-description">
+                            為個人或全家祈福，祈願平安健康，事業順遂，家庭和睦。可選擇一年期或長期祈福。
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="service-item">
+                            <div class="service-name">學業考運</div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="service-description">
+                            為莘莘學子祈願，開智慧，增福慧，金榜題名，前程似錦。
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="service-item">
+                            <div class="service-name">姻緣祈願</div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="service-description">
+                            祈求良緣，化解情緣障礙，祝願有情人終成眷屬，白頭偕老。
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="service-item">
+                            <div class="service-name">還願謝恩</div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="service-description">
+                            心願已成，特備香花供品，誠心還願謝恩。本寺將舉行感恩法會，祈願再結善緣。
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <div class="note">
+                本寺恭請高僧大德主持祈願法會，虔誠祝禱。願所求皆如願，所願皆成真。
+            </div>
+            <div class="modal-footer">
+                <a href="#contact" class="contact-button" onclick="closeWishModal()">聯絡方式</a>
+            </div>
+        </div>
+    </div>
+
     <footer class="footer">
         <div class="footer-content">
             <div class="social-links">
@@ -998,11 +1293,49 @@
             document.body.style.overflow = 'auto';
         }
 
+        function openBuddhaModal() {
+            document.getElementById('buddhaModal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeBuddhaModal() {
+            document.getElementById('buddhaModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        function openMemorialModal() {
+            document.getElementById('memorialModal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMemorialModal() {
+            document.getElementById('memorialModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        function openWishModal() {
+            document.getElementById('wishModal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeWishModal() {
+            document.getElementById('wishModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
         // 点击模态框外部关闭
         window.onclick = function(event) {
-            var modal = document.getElementById('serviceModal');
-            if (event.target == modal) {
+            if (event.target == document.getElementById('serviceModal')) {
                 closeModal();
+            }
+            if (event.target == document.getElementById('buddhaModal')) {
+                closeBuddhaModal();
+            }
+            if (event.target == document.getElementById('memorialModal')) {
+                closeMemorialModal();
+            }
+            if (event.target == document.getElementById('wishModal')) {
+                closeWishModal();
             }
         }
 
@@ -1012,46 +1345,64 @@
             video.play();
         });
 
-        document.querySelector('#bg4').addEventListener('mouseleave', function() {
+        // 处理许愿还愿视频
+        document.querySelector('#wish-fulfillment').addEventListener('mouseenter', function() {
             const video = this.querySelector('video');
-            video.pause();
-            video.currentTime = 0;
+            video.play();
         });
 
-        // 移动端视频自动播放
-        document.addEventListener('DOMContentLoaded', function() {
-            const video = document.querySelector('#bg4 video');
-            const isMobile = window.matchMedia('(max-width: 767px)').matches;
-            
-            if (isMobile) {
-                // 设置视频属性
-                video.setAttribute('playsinline', ''); // iOS支持内联播放
-                video.setAttribute('webkit-playsinline', ''); // 旧版iOS支持
-                video.setAttribute('autoplay', ''); // 自动播放
-                
-                // 尝试播放视频
-                const playVideo = function() {
-                    video.play().catch(function(error) {
-                        console.log("视频自动播放失败:", error);
+        // 视频播放函数
+        function playVideo() {
+            const videos = document.querySelectorAll('video');
+            videos.forEach(video => {
+                const playPromise = video.play();
+                if (playPromise !== undefined) {
+                    playPromise.catch(() => {
+                        // 自动播放被阻止，等待用户交互
                     });
-                };
-                
-                // 页面加载和滚动时尝试播放
-                playVideo();
-                
-                // 监听滚动，当视频进入视口时播放
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            playVideo();
-                        } else {
-                            video.pause();
-                        }
+                }
+            });
+        }
+
+        // 页面加载和滚动时尝试播放
+        playVideo();
+        window.addEventListener('scroll', playVideo);
+
+        // 视频滚动播放控制
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.5
+        };
+
+        const videoObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                const video = entry.target;
+                if (entry.isIntersecting) {
+                    video.play().catch(error => {
+                        console.log("视频播放失败:", error);
                     });
-                }, { threshold: 0.5 });
-                
-                observer.observe(document.querySelector('#bg4'));
-            }
+                } else {
+                    video.pause();
+                }
+            });
+        }, observerOptions);
+
+        // 观察所有视频元素
+        document.querySelectorAll('video').forEach(video => {
+            videoObserver.observe(video);
+        });
+
+        // 点击播放功能
+        document.querySelectorAll('.bg-section').forEach(section => {
+            section.addEventListener('click', function() {
+                const video = this.querySelector('video');
+                if (video) {
+                    video.play().catch(error => {
+                        console.log("视频播放失败:", error);
+                    });
+                }
+            });
         });
     </script>
 </body>
