@@ -35,17 +35,15 @@
         }
 
         .bg-section {
+            position: relative;
             width: 100%;
-            min-height: 100vh;
+            height: 100vh;
             background-size: cover;
             background-position: center;
-            background-repeat: no-repeat;
-            position: relative;
+            background-attachment: fixed;
             display: flex;
             align-items: center;
             justify-content: center;
-            height: 100vh;
-            overflow: hidden;
         }
 
         /* 手机端样式 */
@@ -174,9 +172,7 @@
         }
 
         #bg1 {
-            background-image: url('images/IMG1.jpg');
-            z-index: 3;
-            position: relative;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)), url('images/IMG1.jpg');
         }
 
         #bg2 {
@@ -502,7 +498,7 @@
         }
 
         .modal-content {
-            background-color: rgba(0, 0, 0, 0.9);
+            background-color: #1a1a1a;
             margin: 5% auto;
             padding: 2rem;
             width: 90%;
@@ -532,6 +528,9 @@
             width: 100%;
             border-collapse: collapse;
             margin-top: 2rem;
+            background-color: #1a1a1a;
+            font-family: "Noto Serif JP", serif;
+            color: #fff;
         }
 
         .service-table th,
@@ -795,6 +794,484 @@
             object-fit: cover;
             z-index: 1;
         }
+
+        /* 动画效果 */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .site-title {
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        .site-title:nth-child(1) {
+            animation-delay: 0.5s;
+        }
+
+        .site-title:nth-child(2) {
+            animation-delay: 1s;
+        }
+
+        .site-title:nth-child(3) {
+            animation-delay: 1.5s;
+        }
+
+        .bg-section {
+            opacity: 0;
+            animation: fadeIn 1s ease forwards;
+        }
+
+        .intro-content, .daily-title, .daily-content, .details-button {
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards;
+            animation-delay: 0.3s;
+        }
+
+        .vertical-text {
+            opacity: 0;
+            animation: slideInRight 1s ease forwards;
+            animation-delay: 0.3s;
+        }
+
+        /* 导航样式更新 */
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            padding: 2rem;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            transition: background-color 0.3s ease;
+        }
+
+        .navigation.scrolled {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: #fff;
+            text-decoration: none;
+            font-family: "Noto Serif JP", serif;
+            font-size: 1rem;
+            letter-spacing: 0.2em;
+            position: relative;
+            opacity: 0;
+            animation: fadeIn 1s ease forwards;
+        }
+
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -5px;
+            left: 0;
+            background-color: #fff;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover:after {
+            width: 100%;
+        }
+
+        #service-link {
+            animation-delay: 0.3s;
+        }
+
+        #contact-link {
+            animation-delay: 0.6s;
+        }
+
+        /* 其他动画效果 */
+        .drawer-button span {
+            transition: transform 0.3s ease;
+        }
+
+        .details-button {
+            transition: all 0.3s ease;
+        }
+
+        .modal {
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-content {
+            animation: fadeInUp 0.5s ease;
+        }
+
+        /* 功德表格样式 */
+        .merit-modal-content {
+            background-color: transparent;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .merit-table-container {
+            display: none;
+            margin: 20px 0;
+        }
+
+        .merit-table-container.active {
+            display: block;
+        }
+
+        .merit-table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #1a1a1a;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .merit-table th {
+            background-color: #1a1a1a;
+            color: #fff;
+            padding: 12px;
+            font-size: 16px;
+            text-align: center;
+            border: 1px solid #333;
+        }
+
+        .merit-table td {
+            padding: 12px;
+            text-align: center;
+            border: 1px solid #333;
+            font-size: 14px;
+            color: #fff;
+        }
+
+        .merit-table tr:first-child td {
+            background-color: #d6c69a;
+            color: #1a1a1a;
+        }
+
+        .type-cell {
+            font-size: 16px;
+            writing-mode: vertical-rl;
+            text-orientation: upright;
+            padding: 15px 8px !important;
+            min-width: 30px;
+            background-color: #1a1a1a !important;
+            color: #fff;
+        }
+
+        .merit-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .merit-tab {
+            padding: 8px 16px;
+            background-color: #1a1a1a;
+            border: 1px solid #333;
+            cursor: pointer;
+            font-size: 14px;
+            color: #fff;
+        }
+
+        .merit-tab:hover {
+            background-color: #333;
+        }
+
+        .merit-tab.active {
+            background-color: #333;
+            border-bottom: 2px solid #fff;
+        }
+
+        .merit-table tr:hover td {
+            background-color: #333;
+        }
+        
+        .contact-info {
+            text-align: center;
+            padding: 20px 0;
+            background-color: rgba(0, 0, 0, 0.6);
+            border-radius: 8px;
+            margin: 20px auto;
+            max-width: 600px;
+        }
+        
+        .contact-info h3 {
+            color: #d4af37;
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+        
+        .contact-info p {
+            color: #fff;
+            margin: 8px 0;
+            font-size: 16px;
+        }
+        
+        .merit-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: transparent;
+        }
+
+        .merit-modal-content {
+            background-color: transparent;
+            padding: 2.5rem !important;
+        }
+        
+        .whatsapp-icon {
+            margin-left: 10px;
+            color: #25D366;  /* WhatsApp的品牌颜色 */
+        }
+        
+        .drawer-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 20px;
+            color: #fff;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .merit-title {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 30px;
+            color: #fff;
+            letter-spacing: 0.2em;
+            font-weight: normal;
+        }
+
+        .merit-tab {
+            padding: 8px 16px;
+            background-color: #1a1a1a;
+            border: 1px solid #333;
+            cursor: pointer;
+            font-size: 14px;
+            color: #fff;
+        }
+
+        .merit-tab:hover {
+            background-color: #333;
+        }
+
+        .merit-tab.active {
+            background-color: #fff;
+            color: #1a1a1a;
+        }
+
+        .lamp-description {
+            color: #888;
+            font-size: 12px;
+            margin-top: 4px;
+            text-align: left;
+        }
+
+        .bg-image {
+            animation: zoomInOut 20s infinite alternate ease-in-out;
+            transition: opacity 0.5s;
+            filter: brightness(1);  /* 恢复正常亮度 */
+        }
+
+        .bg-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7));  /* 统一遮罩透明度 */
+            pointer-events: none;
+        }
+
+        .flicker-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.3) 100%);
+            animation: flicker 8s infinite alternate;
+            pointer-events: none;
+        }
+
+        @keyframes zoomInOut {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .bg-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6));
+            pointer-events: none;
+        }
+
+        .flicker-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.3) 100%);
+            animation: flicker 8s infinite alternate;
+            pointer-events: none;
+        }
+
+        @keyframes flicker {
+            0%, 100% {
+                opacity: 0.1;
+            }
+            50% {
+                opacity: 0.3;
+            }
+        }
+        
+        .bg-image-container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .bg-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            animation: zoomInOut 20s infinite alternate ease-in-out;
+            transition: opacity 0.5s;
+            filter: brightness(0.6);
+        }
+
+        .hero {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            position: absolute;
+            z-index: 2;
+            text-align: center;
+            color: #fff;
+        }
+
+        .bg-image-container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .bg-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            animation: zoomInOut 20s infinite alternate ease-in-out;
+            transition: opacity 0.5s;
+            filter: brightness(0.6);
+        }
+
+        .bg-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6));
+            pointer-events: none;
+        }
+
+        .flicker-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.3) 100%);
+            animation: flicker 8s infinite alternate;
+            pointer-events: none;
+        }
+
+        .hero {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            position: absolute;
+            z-index: 2;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .site-title {
+            color: #fff;
+            font-size: 3rem;  /* 文字再小一点 */
+            margin: 0.5rem;
+            writing-mode: vertical-rl;
+            text-orientation: upright;
+            letter-spacing: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
     </style>
 </head>
 <body>
@@ -804,7 +1281,10 @@
             <span></span>
             <span></span>
         </div>
-        <a href="#contact" class="contact-link">Contact</a>
+        <div class="nav-links">
+            <a href="#bg3" id="service-link" class="nav-link">Service</a>
+            <a href="#contact" id="contact-link" class="nav-link">Contact</a>
+        </div>
     </nav>
 
     <div class="drawer">
@@ -818,13 +1298,23 @@
             <li><a href="#memorial-tablets">牌位登記</a></li>
             <li><a href="#wish-fulfillment">許願還願</a></li>
             <li><a href="#bg5">地圖指引</a></li>
-            <li><a href="#contact">聯絡方式</a></li>
+            <li><a href="#contact" class="drawer-item" id="contact">
+                <span>聯絡方式</span>
+                <svg class="whatsapp-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824zm-3.423-14.416c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm.029 18.88c-1.161 0-2.305-.292-3.318-.844l-3.677.964.984-3.595c-.607-1.052-.927-2.246-.926-3.468.001-3.825 3.113-6.937 6.937-6.937 1.856.001 3.598.723 4.907 2.034 1.31 1.311 2.031 3.054 2.03 4.908-.001 3.825-3.113 6.938-6.937 6.938z"/>
+                </svg>
+            </a></li>
         </ul>
     </div>
 
     <div class="background-sections">
-        <div class="bg-section" id="bg1">
-            <div class="header-content">
+        <div class="hero">
+            <div class="bg-image-container">
+                <img src="images/IMG1.jpg" alt="观音寺背景图" class="bg-image">
+                <div class="bg-overlay"></div>
+                <div class="flicker-overlay"></div>
+            </div>
+            <div class="hero-content">
                 <h1 class="site-title">觀</h1>
                 <h1 class="site-title">音</h1>
                 <h1 class="site-title">寺</h1>
@@ -950,7 +1440,7 @@
                     </li>
                     <li class="map-info-item">
                         <svg class="map-info-icon" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+                            <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824zm-3.423-14.416c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm.029 18.88c-1.161 0-2.305-.292-3.318-.844l-3.677.964.984-3.595c-.607-1.052-.927-2.246-.926-3.468.001-3.825 3.113-6.937 6.937-6.937 1.856.001 3.598.723 4.907 2.034 1.31 1.311 2.031 3.054 2.03 4.908-.001 3.825-3.113 6.938-6.937 6.938z"/>
                         </svg>
                         特殊法會需提前三日登記安排
                     </li>
@@ -1242,6 +1732,257 @@
         </div>
     </div>
 
+    <div id="meritModal" class="modal">
+        <div class="modal-content" style="max-width: 900px; padding: 2rem 2rem 1rem 2rem;">
+            <span class="close-modal" onclick="closeMeritModal()">&times;</span>
+            <div class="merit-title">
+                江门观音寺功德明细表
+            </div>
+            
+            <div class="merit-tabs">
+                <button class="merit-tab active" onclick="showMeritTable('buddha')">认供佛像</button>
+                <button class="merit-tab" onclick="showMeritTable('tablet')">供养牌位</button>
+                <button class="merit-tab" onclick="showMeritTable('ceremony')">专场佛事</button>
+                <button class="merit-tab" onclick="showMeritTable('lamp')">供灯祈福</button>
+                <button class="merit-tab" onclick="showMeritTable('regular')">常规功德</button>
+            </div>
+
+            <!-- 认供佛像表格 -->
+            <div id="buddha-table" class="merit-table-container active">
+                <table class="merit-table">
+                    <tr>
+                        <th>类型</th>
+                        <th>功德项目</th>
+                        <th>期限</th>
+                    </tr>
+                    <tr>
+                        <td rowspan="7" class="type-cell">认供佛像</td>
+                        <td>观音塔供自在观音</td>
+                        <td>永久</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="3">弘法楼供阿弥陀佛<br>弘法楼供药师佛</td>
+                        <td>一年</td>
+                    </tr>
+                    <tr>
+                        <td>三年</td>
+                    </tr>
+                    <tr>
+                        <td>永久</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="3">财神殿<br>供琉璃财神</td>
+                        <td>一年</td>
+                    </tr>
+                    <tr>
+                        <td>三年</td>
+                    </tr>
+                    <tr>
+                        <td>五年</td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- 供养牌位表格 -->
+            <div id="tablet-table" class="merit-table-container">
+                <table class="merit-table">
+                    <tr>
+                        <th>类型</th>
+                        <th>功德项目</th>
+                        <th>期限</th>
+                    </tr>
+                    <tr>
+                        <td rowspan="5" class="type-cell">供奉牌位</td>
+                        <td>大雄宝殿一元牌位度祖先</td>
+                        <td rowspan="5">年/半年/月/日</td>
+                    </tr>
+                    <tr><td rowspan="2">大雄宝殿/弘法楼<br>供往生牌位</td></tr>
+                    <tr><td>永久</td></tr>
+                    <tr><td>大雄宝殿/弘法楼<br>供往生牌位</td></tr>
+                    <tr><td>大雄宝殿/弘法楼<br>供往生牌位</td></tr>
+                </table>
+            </div>
+
+            <!-- 专场佛事表格 -->
+            <div id="ceremony-table" class="merit-table-container">
+                <table class="merit-table">
+                    <tr>
+                        <th>类型</th>
+                        <th>功德项目</th>
+                        <th>期限</th>
+                    </tr>
+                    <tr>
+                        <td rowspan="9" class="type-cell">专场佛事</td>
+                        <td>报 恩 供</td>
+                        <td>预约</td>
+                    </tr>
+                    <tr>
+                        <td>初一、十五大众普佛</td>
+                        <td>初一/十五</td>
+                    </tr>
+                    <tr>
+                        <td>往生普佛</td>
+                        <td>预约</td>
+                    </tr>
+                    <tr>
+                        <td>延生普佛</td>
+                        <td>预约</td>
+                    </tr>
+                    <tr>
+                        <td>斋天祈福</td>
+                        <td>农历初九</td>
+                    </tr>
+                    <tr>
+                        <td>地藏经专场</td>
+                        <td>预约</td>
+                    </tr>
+                    <tr>
+                        <td>金刚经专场</td>
+                        <td>预约</td>
+                    </tr>
+                    <tr>
+                        <td>药师经专场</td>
+                        <td>预约</td>
+                    </tr>
+                    <tr>
+                        <td>诵 经</td>
+                        <td>预约</td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- 供灯祈福表格 -->
+            <div id="lamp-table" class="merit-table-container">
+                <table class="merit-table">
+                    <tr>
+                        <th>功德项目</th>
+                        <th>说明</th>
+                        <th>期限</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            大雄宝殿莲花灯
+                            <div class="lamp-description">供养莲花灯，象征心灯常明，智慧增长</div>
+                        </td>
+                        <td rowspan="15">一年<br>半年<br>一个月</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            学业灯
+                            <div class="lamp-description">祈愿学业进步，金榜题名</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            健康灯
+                            <div class="lamp-description">祈愿身体健康，远离病苦</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            平安灯
+                            <div class="lamp-description">祈愿平安吉祥，消灾解难</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            姻缘灯
+                            <div class="lamp-description">祈愿姻缘美满，情深缘长</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            福禄寿灯
+                            <div class="lamp-description">祈愿福禄双全，寿命延长</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            智慧灯
+                            <div class="lamp-description">祈愿开智增慧，明心见性</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            添丁灯
+                            <div class="lamp-description">祈愿添丁进口，子孙满堂</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            事业灯
+                            <div class="lamp-description">祈愿事业有成，前程似锦</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            光明灯
+                            <div class="lamp-description">祈愿前途光明，前程锦绣</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            消灾灯
+                            <div class="lamp-description">祈愿消除灾厄，化解劫难</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            如意灯
+                            <div class="lamp-description">祈愿心想事成，万事如意</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            好运灯
+                            <div class="lamp-description">祈愿运势亨通，诸事顺遂</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            吉祥灯
+                            <div class="lamp-description">祈愿吉祥如意，万事顺遂</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            幸福灯
+                            <div class="lamp-description">祈愿幸福美满，阖家欢乐</div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- 常规功德表格 -->
+            <div id="regular-table" class="merit-table-container">
+                <table class="merit-table">
+                    <tr>
+                        <th>类型</th>
+                        <th>功德项目</th>
+                        <th>期限</th>
+                    </tr>
+                    <tr>
+                        <td rowspan="4" class="type-cell">常规功德</td>
+                        <td>拜 忏</td>
+                        <td>预约</td>
+                    </tr>
+                    <tr>
+                        <td>建设寺院</td>
+                        <td>常年</td>
+                    </tr>
+                    <tr>
+                        <td>供斋、供水、供花果</td>
+                        <td>常年</td>
+                    </tr>
+                    <tr>
+                        <td>随喜功德</td>
+                        <td>常年</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
     <footer class="footer">
         <div class="footer-content">
             <div class="social-links">
@@ -1257,17 +1998,9 @@
                 </a>
                 <a href="#" class="social-link" aria-label="Twitter">
                     <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                        <path d="M16.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
                     </svg>
                 </a>
-            </div>
-            <div class="address-info">
-                <p>觀音寺</p>
-                <p>地址：廣東省中山市石岐區觀音山</p>
-                <p>郵編：528400</p>
-                <p>電話：0760-88888888</p>
-                <p>傳真：0760-88888889</p>
-                <p>電郵：info@guanyintemple.com</p>
             </div>
             <div class="footer-divider"></div>
             <p class="copyright"> 2024 觀音寺 版權所有</p>
@@ -1323,6 +2056,16 @@
             document.body.style.overflow = 'auto';
         }
 
+        function openMeritModal() {
+            document.getElementById('meritModal').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMeritModal() {
+            document.getElementById('meritModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
         // 点击模态框外部关闭
         window.onclick = function(event) {
             if (event.target == document.getElementById('serviceModal')) {
@@ -1337,72 +2080,67 @@
             if (event.target == document.getElementById('wishModal')) {
                 closeWishModal();
             }
+            if (event.target == document.getElementById('meritModal')) {
+                closeMeritModal();
+            }
         }
 
-        // 处理视频hover效果
-        document.querySelector('#bg4').addEventListener('mouseenter', function() {
-            const video = this.querySelector('video');
-            video.play();
+        // 添加滚动时导航栏背景
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('.navigation');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
         });
 
-        // 处理许愿还愿视频
-        document.querySelector('#wish-fulfillment').addEventListener('mouseenter', function() {
-            const video = this.querySelector('video');
-            video.play();
-        });
-
-        // 视频播放函数
-        function playVideo() {
-            const videos = document.querySelectorAll('video');
-            videos.forEach(video => {
-                const playPromise = video.play();
-                if (playPromise !== undefined) {
-                    playPromise.catch(() => {
-                        // 自动播放被阻止，等待用户交互
-                    });
-                }
-            });
-        }
-
-        // 页面加载和滚动时尝试播放
-        playVideo();
-        window.addEventListener('scroll', playVideo);
-
-        // 视频滚动播放控制
+        // 添加滚动时显示动画
         const observerOptions = {
             root: null,
             rootMargin: '0px',
-            threshold: 0.5
+            threshold: 0.1
         };
 
-        const videoObserver = new IntersectionObserver((entries) => {
+        const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                const video = entry.target;
                 if (entry.isIntersecting) {
-                    video.play().catch(error => {
-                        console.log("视频播放失败:", error);
-                    });
-                } else {
-                    video.pause();
+                    entry.target.style.animation = 'fadeInUp 1s ease forwards';
                 }
             });
         }, observerOptions);
 
-        // 观察所有视频元素
-        document.querySelectorAll('video').forEach(video => {
-            videoObserver.observe(video);
+        // 观察所有需要动画的元素
+        document.querySelectorAll('.bg-section, .intro-content, .daily-title, .daily-content, .details-button').forEach(el => {
+            observer.observe(el);
         });
 
-        // 点击播放功能
-        document.querySelectorAll('.bg-section').forEach(section => {
-            section.addEventListener('click', function() {
-                const video = this.querySelector('video');
-                if (video) {
-                    video.play().catch(error => {
-                        console.log("视频播放失败:", error);
-                    });
-                }
+        // 更新 Service 链接点击事件
+        document.getElementById('service-link').addEventListener('click', function(e) {
+            e.preventDefault();
+            openMeritModal();
+        });
+
+        // 功德表格切换功能
+        function showMeritTable(tableId) {
+            // 隐藏所有表格
+            document.querySelectorAll('.merit-table-container').forEach(table => {
+                table.classList.remove('active');
             });
+            // 取消所有标签激活状态
+            document.querySelectorAll('.merit-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // 显示选中的表格
+            document.getElementById(tableId + '-table').classList.add('active');
+            // 激活对应的标签
+            event.target.classList.add('active');
+        }
+        
+        document.getElementById('contact').addEventListener('click', function(e) {
+            e.preventDefault();
+            window.location.href = 'https://wa.me/447778017841';
         });
     </script>
 </body>
